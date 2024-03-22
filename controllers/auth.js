@@ -35,7 +35,7 @@ const Registration = asyncHandler(async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     firstName: req.body.firstName,
-    lastName: req.body.lastName
+    lastName: req.body.lastName,
   });
 
   try {
@@ -48,7 +48,20 @@ const Registration = asyncHandler(async (req, res) => {
     console.log(error);
   }
 });
+
+const getAllUsers = asyncHandler(async (req, res) => {
+  try {
+    const allUsers = await User.find({});
+    res.json({
+      message: "successfully registration",
+      data: allUsers,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = {
   Login,
   Registration,
+  getAllUsers,
 };

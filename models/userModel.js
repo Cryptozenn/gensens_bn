@@ -3,20 +3,72 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    wins: { type: Number, default: 0 },
-    losts: {
-      type: Number,
-      default: 0,
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    id: { type: String },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      match: [
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+        "Please fill a valid email address",
+      ],
+    },
+    phoneNumber: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    dateOfBirth: {
+      type: Date,
+      required: false,
+    },
+    address: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    postalCode: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    nid: {
+      type: String,
+      required: false,
+      unique: true,
+      sparse: true,
+      trim: true,
+    },
+    passport: {
+      type: String,
+      required: false,
+      unique: true,
+      sparse: true,
+      trim: true,
+    },
+    userRole: {
+      type: String,
+      required: true,
+      enum: ["supperadmin", "admin", "user", "guest"],
+      default: "user",
+    },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
