@@ -13,7 +13,6 @@ const protect = asyncHandler(async (req, res, next) => {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id).select("-password");
-      console.log(decoded);
       next();
     } catch (error) {
       console.error(error);
@@ -28,7 +27,10 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 const admin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+  if (
+    (req.user && req.user.userRole === "supperadmin") ||
+    req.user.userRole === "admin"
+  ) {
     next();
   } else {
     res.status(401);
@@ -36,5 +38,6 @@ const admin = (req, res, next) => {
   }
 };
 module.exports = {
-  protect, admin
-}
+  protect,
+  admin,
+};

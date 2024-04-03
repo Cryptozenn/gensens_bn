@@ -252,9 +252,6 @@
         },
         "password": {
           "type": "string"
-        },
-        "userType": {
-          "type": "string"
         }
       }
     },
