@@ -103,12 +103,17 @@ const updateUser = asyncHandler(async (req, res) => {
 
 // Delete single user
 const deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (user) {
-    await user.remove();
-    res.json({ message: "User deleted successfully" });
-  } else {
-    res.status(404).json({ message: "User not found" });
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+
+    if (user) {
+      res.json({ message: "User deleted successfully" });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    // Handle potential errors, such as a malformed ObjectId
+    res.status(500).json({ message: "Server error", error: error.toString() });
   }
 });
 
