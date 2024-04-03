@@ -103,7 +103,7 @@
         "produces": ["application/json"],
         "security": [
           {
-            "BearerAuth": []
+            "Bearer": []
           }
         ],
         "responses": {
@@ -133,7 +133,7 @@
         "produces": ["application/json"],
         "security": [
           {
-            "BearerAuth": []
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -168,7 +168,7 @@
         "produces": ["application/json"],
         "security": [
           {
-            "BearerAuth": []
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -207,7 +207,7 @@
         "description": "Deletes a single user.",
         "security": [
           {
-            "BearerAuth": []
+            "Bearer": []
           }
         ],
         "parameters": [
