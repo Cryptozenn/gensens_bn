@@ -67,6 +67,19 @@ const userSchema = new mongoose.Schema(
       enum: ["supperadmin", "admin", "user", "guest"],
       default: "user",
     },
+    userStatus: {
+      type: String,
+      required: true,
+      enum: [
+        "Pending",
+        "Active",
+        "Deactivated",
+        "Suspended",
+        "Rejected",
+        "Blocked",
+      ],
+      default: "Pending",
+    },
   },
   { timestamps: true }
 );

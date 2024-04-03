@@ -1,18 +1,16 @@
 # Dependency directories
 node_modules/
 
+# Environment configuration files
+.env
+.env.local
+.env.*.local
+
 # Debug log from npm
 npm-debug.log*
 
-# Environment variable files
-.env
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Yarn error logs
+yarn-error.log
 
 # Runtime data
 pids
@@ -25,7 +23,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-*.lcov
 
 # nyc test coverage
 .nyc_output
@@ -36,30 +33,26 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
-# Jekyll metadata directory used by Jekyll sites
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Jekyll metadata file
 .jekyll-metadata
-
-# dotenv environment variable files
-.env*
-!.env.example
-
-# Build output directory
-/dist
-
-# Production build files
-/build
 
 # TypeScript v1 declaration files
 typings/
-
-# TypeScript build output
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
 
 # Optional eslint cache
 .eslintcache
+
+# Microbundle build output
+dist/
 
 # Optional REPL history
 .node_repl_history
@@ -70,29 +63,39 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# dotenv environment variable files
+.env.development.local
+.env.test.local
+.env.production.local
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
 
 # Next.js build output
 .next
-out/
+out
 
-# Nuxt.js build output
+# Nuxt.js build / generate output
 .nuxt
+dist
+
+# Rollup build output
+rollup.config.js
+rollup.config.ts
 dist/
 
-# VuePress build output
+# Storybook build outputs
+.storybook-out
+.storybook-static
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and *not* Netlify
+public
+
+# Vuepress build output
 .vuepress/dist
 
 # Serverless directories
 .serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
